@@ -8,7 +8,7 @@ function makeButton() {
     // Clear any other buttons on the page
     $(".button-section").empty();
     // Function to put buttons on page from the buttons array
-    buttons.forEach(function (element) {        
+    buttons.forEach(function (element) {
         // For each button
         var giphyButton = $("<button>");
         // Add Bootstrap classes for the pretty
@@ -32,7 +32,7 @@ $(document).on("click", "button", function () {
 
     var giphySearch = $(this).attr("searchTerm")
     var giphySearchURL = "http://api.giphy.com/v1/gifs/search?q=" +
-        giphySearch + "&api_key=GEpLlvx43Yy5aSTYLfGZcsH4pkPInlxp&limit=10";
+        giphySearch + "&api_key=GEpLlvx43Yy5aSTYLfGZcsH4pkPInlxp&limit=12";
 
     $.ajax({
         url: giphySearchURL,
@@ -62,25 +62,41 @@ $(document).on("click", "button", function () {
         });
 })
 
+// $(document).on("click", "img", function () {
+//     var state = $(this).attr("giphState");
+//     console.log(state);
+//     if (state === "still") {
+//         $(this).attr("src", $(this).attr("giphPlay"));
+//         $(this).attr("giphState", "play");
+//     }
+//     else {
+//         $(this).attr("src", $(this).attr("giphStill"));
+//         $(this).attr("giphState", "still");
+//     }
+// });
+
 $(document).on("click", "img", function () {
     var state = $(this).attr("giphState");
-
     if (state === "still") {
         $(this).attr("src", $(this).attr("giphPlay"));
         $(this).attr("giphState", "play");
-    }
-    else {
+        limit();
+    };
+});
+function limit() {
+    setTimeout(function () {
+        var state = $(this).attr("giphState");
+        console.log(state);
         $(this).attr("src", $(this).attr("giphStill"));
         $(this).attr("giphState", "still");
-    }
+        console.log(state);
+        console.log("working");
+    }, 2000)
+};
 
-
-});
-
-$("#add_Giphy_button").on("click", function(event) {
+$("#add_Giphy_button").on("click", function (event) {
     event.preventDefault();
     var newGiphSearch = $("#giph-input").val().trim();
     buttons.push(newGiphSearch);
     makeButton();
 });
-    
