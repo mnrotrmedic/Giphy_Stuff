@@ -5,10 +5,10 @@ var buttons = ["James Bond", "Indiana Jones", "Jason Bourne", "Han Solo",
 makeButton();
 
 function makeButton() {
+    // Clear any other buttons on the page
+    $(".button-section").empty();
     // Function to put buttons on page from the buttons array
-    buttons.forEach(function (element) {
-        // Clear any other buttons on the page
-        $(".giph-section").empty();
+    buttons.forEach(function (element) {        
         // For each button
         var giphyButton = $("<button>");
         // Add Bootstrap classes for the pretty
@@ -27,7 +27,7 @@ $("btn").on("click", function () {
 });
 
 // Click event listener
-$("button").on("click", function () {
+$(document).on("click", "button", function () {
     $(".giph-section").empty();
 
     var giphySearch = $(this).attr("searchTerm")
@@ -80,9 +80,7 @@ $(document).on("click", "img", function () {
 $("#add_Giphy_button").on("click", function(event) {
     event.preventDefault();
     var newGiphSearch = $("#giph-input").val().trim();
-    console.log(newGiphSearch);
     buttons.push(newGiphSearch);
-    console.log(buttons);
     makeButton();
 });
     
