@@ -1,6 +1,6 @@
 // Array for buttons which will be passed in as values
-var buttons = ["Cookies", "Pies", "Pastries", "Jelly Beans",
-    "Ice Cream Sandwich", "Donut"];
+var buttons = ["James Bond", "Indiana Jones", "Jason Bourne", "Han Solo",
+    "Ethan Hunt"];
 var click = 0;
 
 
