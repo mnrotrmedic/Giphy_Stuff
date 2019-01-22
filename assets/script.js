@@ -1,6 +1,7 @@
 // Array for buttons which will be passed in as values
 var buttons = ["James Bond", "Indiana Jones", "Jason Bourne", "Han Solo",
     "Ethan Hunt"];
+var giphState = "still";
 
 makeButton();
 
@@ -75,24 +76,12 @@ $(document).on("click", "button", function () {
 //     }
 // });
 
-$(document).on("click", "img", function () {
-    var state = $(this).attr("giphState");
-    if (state === "still") {
+$(document).on("click", "#imageDiv", function () {
+    setTimeout(function(){
         $(this).attr("src", $(this).attr("giphPlay"));
         $(this).attr("giphState", "play");
-        limit();
-    };
+    }, 3000)
 });
-function limit() {
-    setTimeout(function () {
-        var state = $(this).attr("giphState");
-        console.log(state);
-        $(this).attr("src", $(this).attr("giphStill"));
-        $(this).attr("giphState", "still");
-        console.log(state);
-        console.log("working");
-    }, 2000)
-};
 
 $("#add_Giphy_button").on("click", function (event) {
     event.preventDefault();
