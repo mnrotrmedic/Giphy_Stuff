@@ -1,12 +1,12 @@
 // Array for buttons which will be passed in as values
-var buttons = ["Cookies", "Pies", "Pastries", "Jelly Beans",
-    "Ice Cream Sandwich", "Donut"];
-var click = 0;
-
+var buttons = ["James Bond", "Indiana Jones", "Jason Bourne", "Han Solo",
+    "Ethan Hunt"];
 
 makeButton();
 
 function makeButton() {
+    // Clear any other buttons on the page
+    $(".button-section").empty();
     // Function to put buttons on page from the buttons array
     buttons.forEach(function (element) {
         // For each button
@@ -27,7 +27,7 @@ $("btn").on("click", function () {
 });
 
 // Click event listener
-$("button").on("click", function () {
+$(document).on("click", "button", function () {
     $(".giph-section").empty();
 
     var giphySearch = $(this).attr("searchTerm")
@@ -63,9 +63,7 @@ $("button").on("click", function () {
 })
 
 $(document).on("click", "img", function () {
-    click++;
     var state = $(this).attr("giphState");
-
     if (state === "still") {
         $(this).attr("src", $(this).attr("giphPlay"));
         $(this).attr("giphState", "play");
@@ -74,8 +72,6 @@ $(document).on("click", "img", function () {
         $(this).attr("src", $(this).attr("giphStill"));
         $(this).attr("giphState", "still");
     }
-
-
 });
 
 $("#add_Giphy_button").on("click", function (event) {
