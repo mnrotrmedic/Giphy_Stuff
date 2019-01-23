@@ -1,7 +1,6 @@
 // Array for buttons which will be passed in as values
 var buttons = ["James Bond", "Indiana Jones", "Jason Bourne", "Han Solo",
     "Ethan Hunt"];
-// var giphState = "still";
 
 makeButton();
 
@@ -33,7 +32,7 @@ $(document).on("click", "button", function () {
 
     var giphySearch = $(this).attr("searchTerm")
     var giphySearchURL = "http://api.giphy.com/v1/gifs/search?q=" +
-        giphySearch + "&api_key=GEpLlvx43Yy5aSTYLfGZcsH4pkPInlxp&limit=12";
+        giphySearch + "&api_key=GEpLlvx43Yy5aSTYLfGZcsH4pkPInlxp&limit=10";
 
     $.ajax({
         url: giphySearchURL,
@@ -63,35 +62,23 @@ $(document).on("click", "button", function () {
         });
 })
 
-// $(document).on("click", "img", function () {
-//     var state = $(this).attr("giphState");
-//     if (state === "still") {
-//         $(this).attr("src", $(this).attr("giphPlay"));
-//         $(this).attr("giphState", "play");
-//     }
-//     else {
-//         $(this).attr("src", $(this).attr("giphStill"));
-//         $(this).attr("giphState", "still");
-//     }
-// });
-
 $(document).on("click", "img", function () {
     var state = $(this).attr("giphState");
-    // if (state === "still") {
-    //     $(this).attr("src", $(this).attr("giphPlay"));
-    //     $(this).attr("giphState", "play");
-    // }
-    setTimeout(function () {
-        console.log(state);
-        console.log($(this).attr("giphPlay"));
+    if (state === "still") {
         $(this).attr("src", $(this).attr("giphPlay"));
         $(this).attr("giphState", "play");
-    }, 3000)
+    }
+    else {
+        $(this).attr("src", $(this).attr("giphStill"));
+        $(this).attr("giphState", "still");
+    }
 });
 
 $("#add_Giphy_button").on("click", function (event) {
     event.preventDefault();
     var newGiphSearch = $("#giph-input").val().trim();
-    buttons.push(newGiphSearch);
-    makeButton();
+    if (newGiphSearch !== "") {
+        buttons.push(newGiphSearch);
+        makeButton();
+    }
 });
