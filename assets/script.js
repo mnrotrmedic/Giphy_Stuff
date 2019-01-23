@@ -77,7 +77,7 @@ $(document).on("click", "img", function () {
 $("#add_Giphy_button").on("click", function (event) {
     event.preventDefault();
     var newGiphSearch = $("#giph-input").val().trim();
-    if (newGiphSearch !== "") {
+    if (newGiphSearch !== "" && !buttons.includes(newGiphSearch)) {
         buttons.push(newGiphSearch);
         makeButton();
     }
