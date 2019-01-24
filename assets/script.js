@@ -81,4 +81,5 @@ $("#add_Giphy_button").on("click", function (event) {
         buttons.push(newGiphSearch);
         makeButton();
     }
+    $("form").trigger("reset");
 });
