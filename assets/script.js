@@ -31,7 +31,7 @@ $(document).on("click", "button", function () {
     $(".giph-section").empty();
 
     var giphySearch = $(this).attr("searchTerm")
-    var giphySearchURL = "http://api.giphy.com/v1/gifs/search?q=" +
+    var giphySearchURL = "https://api.giphy.com/v1/gifs/search?q=" +
         giphySearch + "&api_key=GEpLlvx43Yy5aSTYLfGZcsH4pkPInlxp&limit=10";
 
     $.ajax({
